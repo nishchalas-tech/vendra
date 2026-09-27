@@ -1,0 +1,8 @@
+Analyze Indian manufacturing and MSME market signals and structure each opportunity into:
+- fact: Verifiable market signal from the source
+- inference: Supply chain or demand implication for Indian MSMEs
+- opportunity_hypothesis: Testable physical-product business idea
+- product_idea: Concrete physical product name
+- product_specification: Material, MOQ, target unit cost in INR (₹), and certification requirements
+- manufacturing_mission_draft: Ready-to-launch Vendra mission parameters in Bengaluru / Karnataka or Indian industrial clusters.
+Do not present AI assumptions as facts.

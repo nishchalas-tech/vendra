@@ -1,0 +1,15 @@
+Extract structured fields from the raw supplier response text into JSON:
+- unit_price (number in INR or null)
+- moq (integer or null)
+- lead_time_days (integer in days or null)
+- material (string or null)
+- certifications (string or null)
+- packaging (string or null)
+- payment_terms (string or null)
+- shipping_cost_inr (number in INR or null)
+- packaging_cost_inr (number in INR or null)
+- other_costs_inr (number in INR or null)
+- notes (string or null)
+- evidence (string)
+
+CRITICAL RULE: If any field is not explicitly stated in the supplier response, leave it as null. Never invent or guess missing values.

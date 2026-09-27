@@ -1,0 +1,121 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Reusable primitives
+    function isSignedIn() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidMissionState(st) {
+      return st is string && st.size() <= 40 && st in [
+        'DRAFT',
+        'READY',
+        'SUPPLIER_DISCOVERY',
+        'RFQ_PREPARATION',
+        'RFQ_SENT',
+        'WAITING_FOR_RESPONSE',
+        'EVALUATING',
+        'RISK_DETECTED',
+        'RECOVERY_IN_PROGRESS',
+        'AWAITING_APPROVAL',
+        'RESUMING',
+        'VERIFYING',
+        'COMPLETED',
+        'FAILED',
+        'CANCELLED'
+      ];
+    }
+
+    function isValidUserProfile(data) {
+      return data.keys().hasAll(['uid', 'full_name', 'email', 'city', 'state', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['uid', 'full_name', 'email', 'city', 'state', 'createdAt', 'updatedAt'])
+        && isValidId(data.uid)
+        && data.uid == request.auth.uid
+        && data.full_name is string && data.full_name.size() >= 1 && data.full_name.size() <= 120
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 254
+        && data.city is string && data.city.size() >= 1 && data.city.size() <= 100
+        && data.state is string && data.state.size() >= 1 && data.state.size() <= 100
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidMissionSync(data) {
+      return data.keys().hasAll(['id', 'ownerId', 'mission_name', 'product_name', 'state', 'quantity', 'maximum_budget', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['id', 'ownerId', 'mission_name', 'product_name', 'state', 'quantity', 'maximum_budget', 'createdAt', 'updatedAt'])
+        && isValidId(data.id)
+        && isValidId(data.ownerId)
+        && data.ownerId == request.auth.uid
+        && data.mission_name is string && data.mission_name.size() >= 1 && data.mission_name.size() <= 200
+        && data.product_name is string && data.product_name.size() >= 1 && data.product_name.size() <= 200
+        && isValidMissionState(data.state)
+        && data.quantity is int && data.quantity > 0 && data.quantity <= 10000000
+        && (data.maximum_budget is int || data.maximum_budget is float) && data.maximum_budget >= 0
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    // Split PII collection for founder profile
+    match /users/{userId}/private/profile {
+      allow get: if isSignedIn() && isValidId(userId) && request.auth.uid == userId;
+      allow create: if isSignedIn()
+        && isValidId(userId)
+        && request.auth.uid == userId
+        && isValidUserProfile(incoming())
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+      allow update: if isSignedIn()
+        && isValidId(userId)
+        && isValidUserProfile(incoming())
+        && request.auth.uid == userId
+        && existing().uid == request.auth.uid
+        && incoming().uid == existing().uid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && incoming().diff(existing()).affectedKeys().hasOnly(['full_name', 'city', 'state', 'updatedAt']);
+      allow delete: if false;
+    }
+
+    // User-owned procurement missions
+    match /missions/{missionId} {
+      allow get: if isSignedIn() && isValidId(missionId) && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
+      allow create: if isSignedIn()
+        && isValidId(missionId)
+        && incoming().id == missionId
+        && isValidMissionSync(incoming())
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+      allow update: if isSignedIn()
+        && isValidId(missionId)
+        && isValidMissionSync(incoming())
+        && existing().ownerId == request.auth.uid
+        && incoming().ownerId == existing().ownerId
+        && incoming().id == existing().id
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && !(existing().state in ['COMPLETED', 'CANCELLED'])
+        && (
+          incoming().diff(existing()).affectedKeys().hasOnly(['mission_name', 'product_name', 'state', 'quantity', 'maximum_budget', 'updatedAt'])
+        );
+      allow delete: if isSignedIn() && isValidId(missionId) && existing().ownerId == request.auth.uid;
+    }
+  }
+}

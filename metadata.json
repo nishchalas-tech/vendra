@@ -1,0 +1,6 @@
+{
+  "name": "Vendra — AI Operating System for Physical-Product Missions",
+  "description": "India-first AI operating system for physical-product procurement missions, supplier discovery, RFQ automation, constraint verification, failure recovery, human approval, and persistent audit trails.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

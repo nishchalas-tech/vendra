@@ -1,0 +1,73 @@
+{
+  "name": "Vendra Supplier Event & Delay Webhook Orchestrator",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vendra-external-supplier-event",
+        "responseMode": "onReceived"
+      },
+      "name": "Inbound Supplier Event Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.VENDRA_BACKEND_URL}}/api/webhooks/external-event",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-N8N-Webhook-Secret",
+              "value": "={{$env.N8N_WEBHOOK_SECRET}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "mission_id",
+              "value": "={{$json.mission_id}}"
+            },
+            {
+              "name": "supplier_id",
+              "value": "={{$json.supplier_id}}"
+            },
+            {
+              "name": "event_type",
+              "value": "={{$json.event_type || 'DELIVERY_DELAY'}}"
+            },
+            {
+              "name": "message",
+              "value": "={{$json.message}}"
+            },
+            {
+              "name": "received_at",
+              "value": "={{$now.toISO()}}"
+            }
+          ]
+        }
+      },
+      "name": "Forward to Vendra Backend",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [540, 300]
+    }
+  ],
+  "connections": {
+    "Inbound Supplier Event Webhook": {
+      "main": [
+        [
+          {
+            "node": "Forward to Vendra Backend",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

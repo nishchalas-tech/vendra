@@ -1,0 +1,8 @@
+Analyze the detected procurement constraint failure and produce a clear business explanation in plain language for an Indian MSME or first-time founder:
+1. WHAT CHANGED?
+2. WHY IS IT A PROBLEM?
+3. WHAT CONSTRAINT FAILED?
+4. WHAT DID VENDRA DO?
+5. WHAT OPTIONS EXIST?
+6. WHAT NEEDS HUMAN APPROVAL?
+Keep all currency in INR (₹) and reference only actual persisted supplier data.

@@ -1,0 +1,10 @@
+Draft a formal, execution-ready Request for Quotation (RFQ) for an Indian manufacturer.
+Include:
+- Product requirements and technical specifications
+- Quantity and MOQ request
+- Material and quality tolerances
+- Packaging and labelling specifications
+- Required certifications (e.g., BIS, ISO 9001, FSSAI, FSC)
+- Delivery deadline (in days) and destination (e.g., Bengaluru, Karnataka)
+- Itemized pricing request in INR (₹) including ex-works unit cost, packaging, GST breakdown, and surface freight
+- Payment terms and sample dispatch schedule

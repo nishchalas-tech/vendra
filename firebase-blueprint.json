@@ -1,0 +1,132 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Private founder profile and account metadata owned by the authenticated user.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the user",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "full_name": {
+          "type": "string",
+          "description": "Founder full name",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Founder email address",
+          "maxLength": 254
+        },
+        "city": {
+          "type": "string",
+          "description": "Indian city (default Bengaluru)",
+          "maxLength": 100
+        },
+        "state": {
+          "type": "string",
+          "description": "Indian state (default Karnataka)",
+          "maxLength": 100
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp"
+        }
+      },
+      "required": ["uid", "full_name", "email", "city", "state", "createdAt", "updatedAt"]
+    },
+    "MissionSync": {
+      "title": "MissionSync",
+      "description": "Synchronized procurement mission snapshot owned by a specific founder.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Mission identifier",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Owner user UID",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "mission_name": {
+          "type": "string",
+          "description": "Name of the manufacturing mission",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "product_name": {
+          "type": "string",
+          "description": "Product name",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "state": {
+          "type": "string",
+          "description": "Current backend mission state",
+          "enum": [
+            "DRAFT",
+            "READY",
+            "SUPPLIER_DISCOVERY",
+            "RFQ_PREPARATION",
+            "RFQ_SENT",
+            "WAITING_FOR_RESPONSE",
+            "EVALUATING",
+            "RISK_DETECTED",
+            "RECOVERY_IN_PROGRESS",
+            "AWAITING_APPROVAL",
+            "RESUMING",
+            "VERIFYING",
+            "COMPLETED",
+            "FAILED",
+            "CANCELLED"
+          ],
+          "maxLength": 40
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Target unit quantity"
+        },
+        "maximum_budget": {
+          "type": "number",
+          "description": "Maximum procurement budget in INR"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["id", "ownerId", "mission_name", "product_name", "state", "quantity", "maximum_budget", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/private/profile": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Isolated private founder profile document containing PII."
+    },
+    "/missions/{missionId}": {
+      "schema": { "$ref": "#/entities/MissionSync" },
+      "description": "User-owned manufacturing and procurement missions."
+    }
+  }
+}
