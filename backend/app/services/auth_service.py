@@ -9,14 +9,14 @@ Implements Section 9 & Section 11:
 """
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional, Tuple
-from backend.app.core.security import (
+from app.core.security import (
     generate_session_token,
     get_session_expiry_iso,
     hash_password,
     verify_password,
 )
-from backend.app.database.base import new_id, utc_now_iso
-from backend.app.database.session import fetch_one, get_db
+from app.database.base import new_id, utc_now_iso
+from app.database.session import fetch_one, get_db
 
 
 def _strip_sensitive_user_fields(row: Dict[str, Any]) -> Dict[str, Any]:

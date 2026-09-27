@@ -3,7 +3,7 @@ Breeth Optional Integration (backend/app/integrations/breeth.py)
 Clearly reports status without fake claims (Section 50 & 73).
 """
 from typing import Any, Dict
-from backend.app.core.config import settings
+from app.core.config import settings
 
 
 def is_breeth_configured() -> bool:

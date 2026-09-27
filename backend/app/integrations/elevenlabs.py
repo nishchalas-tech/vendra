@@ -8,8 +8,8 @@ import base64
 import json
 import urllib.request
 from typing import Any, Dict, Optional
-from backend.app.core.config import settings
-from backend.app.core.logging import logger
+from app.core.config import settings
+from app.core.logging import logger
 
 
 def is_elevenlabs_configured() -> bool:

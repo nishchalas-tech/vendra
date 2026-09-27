@@ -11,7 +11,7 @@ Product
 """
 import re
 from typing import Any, Dict, List
-from backend.app.integrations.gemini import call_gemini_json
+from app.integrations.gemini import call_gemini_json
 
 
 VALID_REQUIREMENT_TYPES = {"raw_material", "component", "packaging", "process"}

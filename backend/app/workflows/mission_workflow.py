@@ -5,21 +5,21 @@ mission_started -> supplier_discovery -> generate_rfq -> wait_for_response -> ev
 """
 import json
 from typing import Any, Dict, List
-from backend.app.agents.orchestrator import orchestrator
-from backend.app.database.base import new_id, utc_now_iso
-from backend.app.database.session import fetch_one, get_db
-from backend.app.models.mission import MissionState
-from backend.app.services.approval_service import create_approval_request
-from backend.app.services.finance_service import record_audit_event
-from backend.app.services.rfq_service import create_rfq_for_supplier
-from backend.app.services.supplier_service import (
+from app.agents.orchestrator import orchestrator
+from app.database.base import new_id, utc_now_iso
+from app.database.session import fetch_one, get_db
+from app.models.mission import MissionState
+from app.services.approval_service import create_approval_request
+from app.services.finance_service import record_audit_event
+from app.services.rfq_service import create_rfq_for_supplier
+from app.services.supplier_service import (
     discover_and_persist_mission_suppliers,
     get_mission_suppliers,
 )
-from backend.app.tools.constraint_checker import check_mission_constraints
-from backend.app.tools.cost_calculator import calculate_procurement_cost, format_inr
-from backend.app.tools.response_parser import parse_supplier_response_payload
-from backend.app.tools.supplier_lookup import lookup_supplier_by_id
+from app.tools.constraint_checker import check_mission_constraints
+from app.tools.cost_calculator import calculate_procurement_cost, format_inr
+from app.tools.response_parser import parse_supplier_response_payload
+from app.tools.supplier_lookup import lookup_supplier_by_id
 
 
 def execute_mission_launch_workflow(mission: Dict[str, Any]) -> Dict[str, Any]:

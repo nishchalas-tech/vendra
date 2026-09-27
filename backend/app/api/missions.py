@@ -2,14 +2,14 @@
 Missions API Handlers (backend/app/api/missions.py)
 """
 from typing import Any, Dict, Tuple
-from backend.app.integrations.elevenlabs import (
+from app.integrations.elevenlabs import (
     interpret_voice_command,
     is_elevenlabs_configured,
     synthesize_voice_response,
 )
-from backend.app.integrations.gemini import call_gemini_text
-from backend.app.services.finance_service import record_audit_event
-from backend.app.services.mission_service import (
+from app.integrations.gemini import call_gemini_text
+from app.services.finance_service import record_audit_event
+from app.services.mission_service import (
     analyze_mission_requirements,
     cancel_mission,
     create_mission,
@@ -23,8 +23,8 @@ from backend.app.services.mission_service import (
     update_mission,
     update_mission_requirements,
 )
-from backend.app.tools.cost_calculator import format_inr
-from backend.app.tools.product_decomposition import analyze_product_requirements
+from app.tools.cost_calculator import format_inr
+from app.tools.product_decomposition import analyze_product_requirements
 
 
 def handle_analyze_product(

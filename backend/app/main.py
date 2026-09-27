@@ -13,27 +13,32 @@ import signal
 import socket
 import sys
 import urllib.request
+from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
 from urllib.parse import parse_qs, urlparse
 
-from backend.app.api.approvals import (
+for _p in (str(Path(__file__).resolve().parents[1]), str(Path(__file__).resolve().parents[2])):
+    if _p not in sys.path:
+        sys.path.append(_p)
+
+from app.api.approvals import (
     handle_approve,
     handle_list_approvals,
     handle_reject,
 )
-from backend.app.api.audit import handle_list_audit_events
-from backend.app.api.auth import (
+from app.api.audit import handle_list_audit_events
+from app.api.auth import (
     handle_login,
     handle_logout,
     handle_me,
     handle_signup,
 )
-from backend.app.api.chat import (
+from app.api.chat import (
     handle_chat_message,
     handle_get_chat_history,
     handle_live_supplier_search,
 )
-from backend.app.api.missions import (
+from app.api.missions import (
     handle_analyze_mission_requirements,
     handle_analyze_product,
     handle_ask_vendra,
@@ -50,40 +55,40 @@ from backend.app.api.missions import (
     handle_update_mission_requirements,
     handle_voice_command,
 )
-from backend.app.api.profile import handle_get_profile, handle_put_profile
-from backend.app.api.rfqs import (
+from app.api.profile import handle_get_profile, handle_put_profile
+from app.api.rfqs import (
     handle_create_rfq,
     handle_list_rfqs,
     handle_send_rfq,
     handle_update_rfq,
 )
-from backend.app.api.risks import handle_list_risks
-from backend.app.api.suppliers import (
+from app.api.risks import handle_list_risks
+from app.api.suppliers import (
     handle_get_supplier,
     handle_list_sourcing_activities,
     handle_list_suppliers,
 )
-from backend.app.api.webhooks import (
+from app.api.webhooks import (
     handle_webhook_approval,
     handle_webhook_external_event,
     handle_webhook_supplier_response,
 )
-from backend.app.core.config import settings
-from backend.app.core.logging import logger
-from backend.app.database.seed import seed_suppliers_catalog
-from backend.app.database.session import fetch_one, get_db, run_migrations
-from backend.app.integrations.breeth import get_breeth_status
-from backend.app.integrations.dodo import get_settlement_status
-from backend.app.integrations.elevenlabs import is_elevenlabs_configured
-from backend.app.integrations.gemini import is_gemini_configured
-from backend.app.integrations.n8n import is_n8n_configured
-from backend.app.integrations.news_api import fetch_market_opportunities, is_news_api_configured
-from backend.app.services.auth_service import (
+from app.core.config import settings
+from app.core.logging import logger
+from app.database.seed import seed_suppliers_catalog
+from app.database.session import fetch_one, get_db, run_migrations
+from app.integrations.breeth import get_breeth_status
+from app.integrations.dodo import get_settlement_status
+from app.integrations.elevenlabs import is_elevenlabs_configured
+from app.integrations.gemini import is_gemini_configured
+from app.integrations.n8n import is_n8n_configured
+from app.integrations.news_api import fetch_market_opportunities, is_news_api_configured
+from app.services.auth_service import (
     authenticate_user,
     get_user_by_session_token,
     register_user,
 )
-from backend.app.services.mission_service import load_isolated_demo_scenario
+from app.services.mission_service import load_isolated_demo_scenario
 
 
 def initialize_backend() -> None:

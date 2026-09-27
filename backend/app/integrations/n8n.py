@@ -7,8 +7,8 @@ n8n never overrides Policy Engine, approves payments, or becomes the mission dat
 import json
 import urllib.request
 from typing import Any, Dict
-from backend.app.core.config import settings
-from backend.app.core.logging import logger
+from app.core.config import settings
+from app.core.logging import logger
 
 
 def is_n8n_configured() -> bool:

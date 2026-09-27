@@ -8,32 +8,32 @@ Implements Sections 13, 14, 15, 16, 17, 18, 27:
 """
 import json
 from typing import Any, Dict, List, Optional
-from backend.app.database.base import new_id, utc_now_iso
-from backend.app.database.session import fetch_all, fetch_one, get_db
-from backend.app.integrations.render import map_mission_state_to_workflow_step
-from backend.app.models.mission import MissionState
-from backend.app.services.approval_service import list_user_approvals
-from backend.app.services.finance_service import (
+from app.database.base import new_id, utc_now_iso
+from app.database.session import fetch_all, fetch_one, get_db
+from app.integrations.render import map_mission_state_to_workflow_step
+from app.models.mission import MissionState
+from app.services.approval_service import list_user_approvals
+from app.services.finance_service import (
     list_mission_audit_events,
     record_audit_event,
 )
-from backend.app.services.rfq_service import (
+from app.services.rfq_service import (
     create_rfq_for_supplier,
     list_mission_rfqs,
 )
-from backend.app.services.risk_service import list_mission_risks
-from backend.app.services.supplier_service import (
+from app.services.risk_service import list_mission_risks
+from app.services.supplier_service import (
     discover_and_persist_mission_suppliers,
     get_mission_suppliers,
 )
-from backend.app.tools.cost_calculator import format_inr
-from backend.app.tools.product_decomposition import analyze_product_requirements
-from backend.app.tools.supplier_search import build_dynamic_search_queries
-from backend.app.workflows.mission_workflow import (
+from app.tools.cost_calculator import format_inr
+from app.tools.product_decomposition import analyze_product_requirements
+from app.tools.supplier_search import build_dynamic_search_queries
+from app.workflows.mission_workflow import (
     execute_mission_launch_workflow,
     process_and_evaluate_supplier_response,
 )
-from backend.app.workflows.supplier_recovery import (
+from app.workflows.supplier_recovery import (
     execute_supplier_failure_recovery_workflow,
 )
 

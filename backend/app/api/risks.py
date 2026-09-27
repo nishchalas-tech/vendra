@@ -2,8 +2,8 @@
 Risks API Handlers (backend/app/api/risks.py)
 """
 from typing import Any, Dict, Optional, Tuple
-from backend.app.services.mission_service import get_mission_detail
-from backend.app.services.risk_service import list_mission_risks
+from app.services.mission_service import get_mission_detail
+from app.services.risk_service import list_mission_risks
 
 
 def handle_list_risks(

@@ -5,9 +5,9 @@ so the Main UI, Mission Workflows, and Vendra AI Chatbot all share the exact sam
 Live Internet Supplier Discovery pipeline.
 """
 from typing import Any, Dict, List, Optional
-from backend.app.core.logging import logger
-from backend.app.database.session import fetch_all, get_db
-from backend.app.services.supplier_discovery_service import (
+from app.core.logging import logger
+from app.database.session import fetch_all, get_db
+from app.services.supplier_discovery_service import (
     build_dynamic_search_queries,
     discover_suppliers_live,
     evaluate_and_rank_live_candidates,

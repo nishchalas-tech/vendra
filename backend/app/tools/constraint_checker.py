@@ -5,7 +5,7 @@ Deterministic checks for budget, landed unit cost, lead time <= deadline,
 quantity, MOQ <= required quantity, required certifications, and preferred location.
 """
 from typing import Any, Dict, List, Optional
-from backend.app.tools.cost_calculator import format_inr
+from app.tools.cost_calculator import format_inr
 
 
 def check_mission_constraints(

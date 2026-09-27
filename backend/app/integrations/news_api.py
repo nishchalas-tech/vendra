@@ -23,9 +23,9 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from typing import Any, Dict, List, Optional, Set
-from backend.app.core.config import _load_dotenv_file, settings
-from backend.app.core.logging import logger
-from backend.app.integrations.gemini import call_gemini_json
+from app.core.config import _load_dotenv_file, settings
+from app.core.logging import logger
+from app.integrations.gemini import call_gemini_json
 
 
 # Rotating startup funding & manufacturing search angles so repeated refreshes always discover new live articles

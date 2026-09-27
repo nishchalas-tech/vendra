@@ -4,12 +4,12 @@ Implements Section 23:
 Creates, stores, sends, and updates RFQs for mission-qualified suppliers.
 """
 from typing import Any, Dict, List, Optional
-from backend.app.database.base import new_id, utc_now_iso
-from backend.app.database.session import fetch_all, fetch_one, get_db
-from backend.app.models.rfq import RFQStatus
-from backend.app.services.finance_service import record_audit_event
-from backend.app.tools.rfq_generator import generate_rfq_document
-from backend.app.tools.supplier_lookup import lookup_supplier_by_id
+from app.database.base import new_id, utc_now_iso
+from app.database.session import fetch_all, fetch_one, get_db
+from app.models.rfq import RFQStatus
+from app.services.finance_service import record_audit_event
+from app.tools.rfq_generator import generate_rfq_document
+from app.tools.supplier_lookup import lookup_supplier_by_id
 
 
 def create_rfq_for_supplier(

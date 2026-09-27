@@ -4,8 +4,8 @@ Supplier Engine & Filtering Tests (backend/tests/test_suppliers.py)
 import os
 import tempfile
 import unittest
-from backend.app.main import dispatch_request, initialize_backend
-from backend.app.tools.supplier_search import search_suppliers_for_mission
+from app.main import dispatch_request, initialize_backend
+from app.tools.supplier_search import search_suppliers_for_mission
 
 
 class TestSuppliers(unittest.TestCase):

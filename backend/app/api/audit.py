@@ -2,8 +2,8 @@
 Audit Ledger API Handlers (backend/app/api/audit.py)
 """
 from typing import Any, Dict, Optional, Tuple
-from backend.app.services.finance_service import list_mission_audit_events
-from backend.app.services.mission_service import get_mission_detail
+from app.services.finance_service import list_mission_audit_events
+from app.services.mission_service import get_mission_detail
 
 
 def handle_list_audit_events(

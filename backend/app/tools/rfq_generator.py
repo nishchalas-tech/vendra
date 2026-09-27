@@ -7,8 +7,8 @@ payment terms, and shipping requirements in INR (₹).
 """
 from pathlib import Path
 from typing import Any, Dict
-from backend.app.integrations.gemini import call_gemini_text
-from backend.app.tools.cost_calculator import format_inr
+from app.integrations.gemini import call_gemini_text
+from app.tools.cost_calculator import format_inr
 
 
 def generate_rfq_document(mission: Dict[str, Any], supplier: Dict[str, Any]) -> Dict[str, Any]:

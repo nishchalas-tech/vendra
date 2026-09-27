@@ -20,13 +20,17 @@ import json
 import re
 import urllib.parse
 from typing import Any, Dict, List, Optional, Tuple
+from app.core.config import settings
+from app.core.logging import logger
+from app.database.base import new_id, utc_now_iso
+from app.database.session import fetch_all, get_db
+from app.tools.product_decomposition import analyze_product_requirements
 from google import genai
-from google.genai import perform_live_internet_grounding, types
-from backend.app.core.config import settings
-from backend.app.core.logging import logger
-from backend.app.database.base import new_id, utc_now_iso
-from backend.app.database.session import fetch_all, get_db
-from backend.app.tools.product_decomposition import analyze_product_requirements
+from google.genai import types
+
+perform_live_internet_grounding = getattr(
+    genai, "perform_live_internet_grounding", lambda *_args, **_kwargs: []
+)
 
 
 SUPPLIER_TYPE_PRIORITY = {

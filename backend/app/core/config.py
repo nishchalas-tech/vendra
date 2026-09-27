@@ -3,9 +3,15 @@ Vendra Backend Configuration (backend/app/core/config.py)
 Loads environment variables safely without requiring optional keys for startup.
 """
 import os
+import sys
 from pathlib import Path
 
+BACKEND_ROOT = Path(__file__).resolve().parents[2]
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
+
+for _p in (str(BACKEND_ROOT), str(PROJECT_ROOT)):
+    if _p not in sys.path:
+        sys.path.append(_p)
 
 
 def _load_dotenv_file() -> None:

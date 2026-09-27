@@ -3,7 +3,7 @@ Deterministic Policy Engine (backend/app/policy/engine.py)
 Evaluates any proposed action or AgentDecision against Vendra's deterministic governance rules.
 """
 from typing import Any, Dict, Optional
-from backend.app.policy.rules import (
+from app.policy.rules import (
     AUTO_EXECUTE_ACTIONS,
     BLOCKED_ACTIONS,
     HUMAN_APPROVAL_ACTIONS,

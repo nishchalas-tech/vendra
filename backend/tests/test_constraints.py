@@ -2,8 +2,8 @@
 Deterministic Cost Engine & Constraint Engine Tests (backend/tests/test_constraints.py)
 """
 import unittest
-from backend.app.tools.constraint_checker import check_mission_constraints
-from backend.app.tools.cost_calculator import calculate_procurement_cost, format_inr
+from app.tools.constraint_checker import check_mission_constraints
+from app.tools.cost_calculator import calculate_procurement_cost, format_inr
 
 
 class TestCostAndConstraints(unittest.TestCase):

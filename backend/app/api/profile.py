@@ -2,7 +2,7 @@
 Founder Profile API Handlers (backend/app/api/profile.py)
 """
 from typing import Any, Dict, Tuple
-from backend.app.services.auth_service import get_founder_profile, update_founder_profile
+from app.services.auth_service import get_founder_profile, update_founder_profile
 
 
 def handle_get_profile(user: Dict[str, Any]) -> Tuple[int, Dict[str, Any]]:

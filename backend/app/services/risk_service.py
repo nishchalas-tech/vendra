@@ -7,8 +7,8 @@ WHAT DID VENDRA DO? WHAT OPTIONS EXIST? WHAT NEEDS HUMAN APPROVAL?
 """
 import json
 from typing import Any, Dict, List, Optional
-from backend.app.database.base import new_id, utc_now_iso
-from backend.app.database.session import fetch_all, fetch_one, get_db
+from app.database.base import new_id, utc_now_iso
+from app.database.session import fetch_all, fetch_one, get_db
 
 
 def create_or_update_mission_risk(

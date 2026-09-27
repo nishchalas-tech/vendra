@@ -8,11 +8,11 @@ suppliers isolated to Demo Mode.
 import json
 import urllib.parse
 from typing import Any, Dict, List, Optional
-from backend.app.database.base import new_id, utc_now_iso
-from backend.app.database.session import fetch_all, get_db
-from backend.app.services.supplier_discovery_service import _classify_supplier_type
-from backend.app.tools.supplier_lookup import lookup_supplier_by_id
-from backend.app.tools.supplier_search import search_suppliers_for_mission
+from app.database.base import new_id, utc_now_iso
+from app.database.session import fetch_all, get_db
+from app.services.supplier_discovery_service import _classify_supplier_type
+from app.tools.supplier_lookup import lookup_supplier_by_id
+from app.tools.supplier_search import search_suppliers_for_mission
 
 
 def _extract_domain(url: str) -> str:

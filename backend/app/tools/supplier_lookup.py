@@ -2,7 +2,7 @@
 Supplier Lookup Tool (backend/app/tools/supplier_lookup.py)
 """
 from typing import Any, Dict, Optional
-from backend.app.database.session import fetch_one, get_db
+from app.database.session import fetch_one, get_db
 
 
 def lookup_supplier_by_id(supplier_id: str) -> Optional[Dict[str, Any]]:

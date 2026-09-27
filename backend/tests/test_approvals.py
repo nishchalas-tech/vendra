@@ -4,7 +4,7 @@ Human Approval & Rejection Tests (backend/tests/test_approvals.py)
 import os
 import tempfile
 import unittest
-from backend.app.main import dispatch_request, initialize_backend
+from app.main import dispatch_request, initialize_backend
 
 
 class TestApprovals(unittest.TestCase):

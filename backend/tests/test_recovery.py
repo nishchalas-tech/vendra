@@ -7,7 +7,7 @@ Expected: constraint violation, risk, recovery, alternative suppliers, approval,
 import os
 import tempfile
 import unittest
-from backend.app.main import dispatch_request, initialize_backend
+from app.main import dispatch_request, initialize_backend
 
 
 class TestCriticalSupplierRecovery(unittest.TestCase):

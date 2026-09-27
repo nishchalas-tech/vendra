@@ -2,8 +2,8 @@
 Suppliers API Handlers (backend/app/api/suppliers.py)
 """
 from typing import Any, Dict, Optional, Tuple
-from backend.app.services.supplier_discovery_service import list_sourcing_activities
-from backend.app.services.supplier_service import get_supplier, list_all_suppliers
+from app.services.supplier_discovery_service import list_sourcing_activities
+from app.services.supplier_service import get_supplier, list_all_suppliers
 
 
 def handle_list_suppliers(include_demo: bool = True) -> Tuple[int, Dict[str, Any]]:

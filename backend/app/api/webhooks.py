@@ -8,11 +8,11 @@ Validates N8N_WEBHOOK_SECRET or authenticated user ownership.
 n8n never overrides Policy Engine or becomes the mission database.
 """
 from typing import Any, Dict, Optional, Tuple
-from backend.app.core.config import settings
-from backend.app.core.security import verify_webhook_signature
-from backend.app.database.session import fetch_one, get_db
-from backend.app.services.approval_service import approve_request, reject_request
-from backend.app.services.mission_service import (
+from app.core.config import settings
+from app.core.security import verify_webhook_signature
+from app.database.session import fetch_one, get_db
+from app.services.approval_service import approve_request, reject_request
+from app.services.mission_service import (
     run_mission_process_supplier_response,
     run_mission_supplier_delay_recovery,
 )

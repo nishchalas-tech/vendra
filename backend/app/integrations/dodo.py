@@ -5,7 +5,7 @@ Optional future payment/settlement event where genuinely appropriate after human
 Clearly labelled as OPTIONAL / NOT CONFIGURED when DODO_API_KEY is absent.
 """
 from typing import Any, Dict
-from backend.app.core.config import settings
+from app.core.config import settings
 
 
 def is_dodo_configured() -> bool:

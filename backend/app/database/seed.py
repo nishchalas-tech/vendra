@@ -4,8 +4,8 @@ Seeds 12 high-quality Indian illustrative manufacturing suppliers (prioritizing 
 All monetary values are in INR (₹). Fictional suppliers are explicitly marked demo_supplier=1
 and evidence='Illustrative demo data' as mandated by Sections 17, 22, and 62.
 """
-from backend.app.database.base import utc_now_iso
-from backend.app.database.session import get_db, run_migrations
+from app.database.base import utc_now_iso
+from app.database.session import get_db, run_migrations
 
 
 ILLUSTRATIVE_SUPPLIERS = [

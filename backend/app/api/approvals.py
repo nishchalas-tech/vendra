@@ -2,7 +2,7 @@
 Approvals API Handlers (backend/app/api/approvals.py)
 """
 from typing import Any, Dict, Optional, Tuple
-from backend.app.services.approval_service import (
+from app.services.approval_service import (
     approve_request,
     list_user_approvals,
     reject_request,

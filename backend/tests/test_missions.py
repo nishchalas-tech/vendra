@@ -4,7 +4,7 @@ Mission Creation, Editing, Multiple Missions, Draft Persistence, and Launch Test
 import os
 import tempfile
 import unittest
-from backend.app.main import dispatch_request, initialize_backend
+from app.main import dispatch_request, initialize_backend
 
 
 class TestMissions(unittest.TestCase):

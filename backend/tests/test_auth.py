@@ -14,7 +14,7 @@ Covers scenarios A through K:
 import os
 import tempfile
 import unittest
-from backend.app.main import dispatch_request, initialize_backend
+from app.main import dispatch_request, initialize_backend
 
 
 class TestAuthAndProfile(unittest.TestCase):

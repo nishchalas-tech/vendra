@@ -8,10 +8,10 @@ Never corrupts mission state on failure (Section 67).
 import json
 import re
 from typing import Any, Dict, Optional
+from app.core.config import settings
+from app.core.logging import logger
 from google import genai
 from google.genai import types
-from backend.app.core.config import settings
-from backend.app.core.logging import logger
 
 
 def is_gemini_configured() -> bool:

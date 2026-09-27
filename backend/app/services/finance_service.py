@@ -3,9 +3,9 @@ Audit Event Service & Finance Service (backend/app/services/finance_service.py)
 Provides deterministic financial helpers and persistent Audit Ledger recording (Section 29).
 """
 from typing import Any, Dict, List, Optional
-from backend.app.database.base import new_id, utc_now_iso
-from backend.app.database.session import fetch_all, get_db
-from backend.app.tools.cost_calculator import calculate_procurement_cost, format_inr
+from app.database.base import new_id, utc_now_iso
+from app.database.session import fetch_all, get_db
+from app.tools.cost_calculator import calculate_procurement_cost, format_inr
 
 
 def record_audit_event(

@@ -9,12 +9,12 @@ Connects the Vendra AI Chatbot to the exact same real backend services used by t
 import json
 import re
 from typing import Any, Dict, List, Optional
-from backend.app.database.base import new_id, utc_now_iso
-from backend.app.database.session import fetch_all, get_db
-from backend.app.integrations.gemini import call_gemini_text
-from backend.app.services.approval_service import list_user_approvals
-from backend.app.services.finance_service import record_audit_event
-from backend.app.services.mission_service import (
+from app.database.base import new_id, utc_now_iso
+from app.database.session import fetch_all, get_db
+from app.integrations.gemini import call_gemini_text
+from app.services.approval_service import list_user_approvals
+from app.services.finance_service import record_audit_event
+from app.services.mission_service import (
     analyze_mission_requirements,
     create_mission,
     get_mission_detail,
@@ -23,11 +23,11 @@ from backend.app.services.mission_service import (
     run_mission_supplier_delay_recovery,
     run_mission_supplier_discovery,
 )
-from backend.app.services.risk_service import list_mission_risks
-from backend.app.services.supplier_discovery_service import discover_suppliers_live
-from backend.app.services.supplier_service import upsert_supplier_record
-from backend.app.tools.cost_calculator import format_inr
-from backend.app.tools.product_decomposition import analyze_product_requirements
+from app.services.risk_service import list_mission_risks
+from app.services.supplier_discovery_service import discover_suppliers_live
+from app.services.supplier_service import upsert_supplier_record
+from app.tools.cost_calculator import format_inr
+from app.tools.product_decomposition import analyze_product_requirements
 
 
 def list_chat_history(

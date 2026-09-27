@@ -5,7 +5,7 @@ Verifies that User B cannot view, edit, launch, or approve User A's missions.
 import os
 import tempfile
 import unittest
-from backend.app.main import dispatch_request, initialize_backend
+from app.main import dispatch_request, initialize_backend
 
 
 class TestOwnershipIsolation(unittest.TestCase):

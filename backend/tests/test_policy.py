@@ -2,8 +2,8 @@
 Deterministic Policy Engine & Structured AgentDecision Tests (backend/tests/test_policy.py)
 """
 import unittest
-from backend.app.policy.engine import evaluate_policy
-from backend.app.schemas.decision import AgentDecision
+from app.policy.engine import evaluate_policy
+from app.schemas.decision import AgentDecision
 
 
 class TestPolicyAndDecisions(unittest.TestCase):

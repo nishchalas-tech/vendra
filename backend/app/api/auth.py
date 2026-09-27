@@ -2,7 +2,7 @@
 Authentication API Handlers (backend/app/api/auth.py)
 """
 from typing import Any, Dict, Optional, Tuple
-from backend.app.services.auth_service import (
+from app.services.auth_service import (
     authenticate_user,
     get_user_by_session_token,
     logout_session,

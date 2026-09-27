@@ -5,8 +5,8 @@ Covers: RFQ generation, sending, response parsing, and preserving null/unknown f
 import os
 import tempfile
 import unittest
-from backend.app.main import dispatch_request, initialize_backend
-from backend.app.tools.response_parser import parse_supplier_response_payload
+from app.main import dispatch_request, initialize_backend
+from app.tools.response_parser import parse_supplier_response_payload
 
 
 class TestRFQAndResponseParsing(unittest.TestCase):

@@ -2,8 +2,8 @@
 RFQs API Handlers (backend/app/api/rfqs.py)
 """
 from typing import Any, Dict, Optional, Tuple
-from backend.app.services.mission_service import get_mission_detail
-from backend.app.services.rfq_service import (
+from app.services.mission_service import get_mission_detail
+from app.services.rfq_service import (
     create_rfq_for_supplier,
     list_mission_rfqs,
     send_rfq,

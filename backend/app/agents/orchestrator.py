@@ -8,10 +8,10 @@ Implements Section 6, Section 19, and Section 20:
 """
 from pathlib import Path
 from typing import Any, Dict, Optional
-from backend.app.integrations.gemini import call_gemini_json
-from backend.app.policy.engine import evaluate_policy
-from backend.app.schemas.decision import AgentDecision
-from backend.app.services.finance_service import record_audit_event
+from app.integrations.gemini import call_gemini_json
+from app.policy.engine import evaluate_policy
+from app.schemas.decision import AgentDecision
+from app.services.finance_service import record_audit_event
 
 
 class MissionOrchestrator:

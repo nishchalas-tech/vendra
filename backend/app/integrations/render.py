@@ -5,7 +5,7 @@ Long-running execution, waiting, idempotent retries, and recovery tracking.
 Database remains the authoritative source of truth.
 """
 from typing import Any, Dict, List
-from backend.app.core.config import settings
+from app.core.config import settings
 
 
 WORKFLOW_STEPS: List[str] = [

@@ -6,14 +6,14 @@ Exposes endpoints for the Vendra AI Chatbot connected to the real backend servic
 - POST /api/suppliers/discover (direct live internet supplier discovery endpoint)
 """
 from typing import Any, Dict, Optional, Tuple
-from backend.app.services.chat_service import (
+from app.services.chat_service import (
     list_chat_history,
     process_chat_message,
 )
-from backend.app.services.supplier_discovery_service import discover_suppliers_live
-from backend.app.services.supplier_service import upsert_supplier_record
-from backend.app.database.base import utc_now_iso
-from backend.app.database.session import get_db
+from app.services.supplier_discovery_service import discover_suppliers_live
+from app.services.supplier_service import upsert_supplier_record
+from app.database.base import utc_now_iso
+from app.database.session import get_db
 
 
 def handle_chat_message(
