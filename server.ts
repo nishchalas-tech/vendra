@@ -107,7 +107,7 @@ async function ensurePythonBackendRunning(): Promise<void> {
   }
 
   restartAttempts += 1;
-  pythonProcess = spawn('python3', ['-m', 'backend.app.main'], {
+  pythonProcess = spawn('python', ['-m', 'backend.app.main'], {
     cwd: process.cwd(),
     env: {
       ...process.env,
